@@ -7,11 +7,26 @@ function Food({name,picture}){
   );
 }
 const foodLike = [
-  {name: 'Kimchi'},
-  {name: 'Samgyeopsal'},
-  {name: 'Bibimbap'},
-  {name: 'Doncasu'},
-  {name: 'Kimbap'},
+  {
+    id:1,
+    name: 'Kimchi'
+  },
+  {
+    id:2,
+    name: 'Samgyeopsal'
+  },
+  {
+    id:3,
+    name: 'Bibimbap'
+  },
+  { 
+    id:4,
+    name: 'Doncasu'}
+  ,
+  { 
+    id:5,
+    name: 'Kimbap'
+  },
 ];
 
 function renderFood(dish){
