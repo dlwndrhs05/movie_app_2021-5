@@ -94,7 +94,105 @@ friends.map(foo => {
   console.log(foo);
   return 0;
 })
+//결과값
+[0,0,0]
 ```
+```javascript
+//무명함수를 사용허가
+const friends = ["a","b","c"]
+
+friends.map(friends => {
+  console.log(friends);
+  return friends+ "♥";
+})
+//결과값
+["a ♥","b ♥","c ♥"]
+```
+```javascript
+//맵을 활용해 데이터를 출력
+function Food({name}){
+  return <h3>I like {name}</h3>;
+}
+const foodLike = [
+  {name: 'Kimchi'},
+  {name: 'Samgyeopsal'},
+  {name: 'Bibimbap'},
+  {name: 'Doncasu'},
+  {name: 'Kimbap'},
+];
+function App() {
+  return (
+  <div>
+    {foodLike.map(dish => (<Food name={dish.name}/>))}
+  </div> 
+  );
+  
+}
+
+export default App;
+```
+```javascript
+//컴포넌트에 이미지 출력
+function Food({name,picture}){
+  return (<div>
+    <h2>I like {name}</h2>
+    <img src={picture} />
+    </div>
+  );
+}
+const foodLike = [
+  {name: 'Kimchi'},
+  {name: 'Samgyeopsal'},
+  {name: 'Bibimbap'},
+  {name: 'Doncasu'},
+  {name: 'Kimbap'},
+];
+function App() {
+  return (
+  <div>
+    {foodLike.map(dish => 
+      (<Food name={dish.name} picture={dish.image}/>))}
+  </div> 
+  );
+  
+}
+
+export default App;
+```
+```javascript
+//map()함수의 인자로 함수전달하기
+function Food({name,picture}){
+  return (<div>
+    <h2>I like {name}</h2>
+    <img src={picture} />
+    </div>
+  );
+}
+const foodLike = [
+  {name: 'Kimchi'},
+  {name: 'Samgyeopsal'},
+  {name: 'Bibimbap'},
+  {name: 'Doncasu'},
+  {name: 'Kimbap'},
+];
+
+function renderFood(dish){
+   return <Food name={dish.name} picture={dish.image} />;
+}
+function App() {
+  return (
+  <div>
+    {foodLike.map(renderFood)}
+  </div> 
+  );
+  
+}
+
+export default App;
+```
+console.log를 이용하여 map함수를 출력하면 콘솔 창에서
+map함수가 반환한 리액트 컴포넌트를 볼수 있다.
+
 ## 9월 08일 
 
 ### 리액트 기초 개념

@@ -1,6 +1,10 @@
 
-function Food({fav}){
-  return <h3>I like {fav}</h3>;
+function Food({name,picture}){
+  return (<div>
+    <h2>I like {name}</h2>
+    <img src={picture} />
+    </div>
+  );
 }
 const foodLike = [
   {name: 'Kimchi'},
@@ -9,11 +13,16 @@ const foodLike = [
   {name: 'Doncasu'},
   {name: 'Kimbap'},
 ];
+
+function renderFood(dish){
+   return <Food name={dish.name} picture={dish.image} />;
+}
 function App() {
   return (
   <div>
-    hello react
-  </div> );
+    {foodLike.map(renderFood)}
+  </div> 
+  );
   
 }
 
