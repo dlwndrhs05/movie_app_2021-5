@@ -1,5 +1,39 @@
 # 이중곤 201930323
+## 9월 15일
 
+#### JSX
+
+JSX는 HTML과 JS를 조합하여 만든다
+```javascript
+//JSX로 만든 컴포넌트
+function Potato(){
+  return <h3>I love potato</h3>;
+}
+```
+컴포넌트는 자바의 클래스 처럼 하나의 클래스안에 여러개를 만들수도 있고  
+여러개의 컴포넌트를 만들어 임포트로 관리할 수 있다.
+#### props
+props는 컴포넌트에서 컴포넌트로 전달하는 데이터를 말하며 함수의 매개변수하고 비슷하다.  
+props에는 boolean,숫자,배열과 같은 다양한 형태의 데이터를 담을 수 있다.  
+단 props에 있는 데이터는 문자열인 경우를 제외하면 모두 중괄호({})로 값을 감싸야 한다.
+```javascript
+function Food(){
+  return <h3>I love potato</h3>;
+}
+
+function App() {
+  return (
+    //props에 있는 데이터가 문자열이 아닐경우 중괄호({})로 감싼다
+  <div>
+    hello react
+    <Food fav="kimchi" something={true} papapapa={['hello',1,2,3,4,true]}/> 
+  </div> ); 
+  
+}
+
+export default App;
+
+```
 ## 9월 08일 
 
 ### 리액트 기초 개념
