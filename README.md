@@ -34,6 +34,67 @@ function App() {
 export default App;
 
 ```
+```javascript
+//JS의 구조분해할당을 활룡한 Props
+function Food({fav}){
+  return <h3>I like {fav}</h3>;
+}
+
+function App() {
+  return (
+  <div>
+    hello react
+    <Food fav="kimchi"/>
+  </div> );
+  
+}
+
+export default App;
+
+```
+```javascript
+//여러개의 컴포넌트에 props 사용
+function Food({fav}){
+  return <h3>I like {fav}</h3>;
+}
+
+function App() {
+  return (
+  <div>
+    hello react
+    <Food fav="kimchi"/>
+    <Food fav="ramen"/>
+    <Food fav="samgiopsal"/>
+    <Food fav="chukumi"/>
+  </div> );
+  
+}
+
+export default App;
+```
+#### map() 함수 사용하기
+
+```javascript
+//서버에서 받을 데이터를 저장할수 있는 변수
+const foodLike = [
+  {name: 'Kimchi'},
+  {name: 'Samgyeopsal'},
+  {name: 'Bibimbap'},
+  {name: 'Doncasu'},
+  {name: 'Kimbap'},
+];
+//데이터 생성
+```
+map() 함수는 배열의 모든 원소 마다 특정 작업을 하는 함수를 적용하고  
+그 함수가 반환한 결과를 모아서 배열로 반환한다.
+```javascript
+const friends = ["a","b","c"]
+
+friends.map(foo => {
+  console.log(foo);
+  return 0;
+})
+```
 ## 9월 08일 
 
 ### 리액트 기초 개념

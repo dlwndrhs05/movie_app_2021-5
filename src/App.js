@@ -1,14 +1,18 @@
 
-function Food(props){
-  console.log(props);
-  return <h3>I love potato</h3>;
+function Food({fav}){
+  return <h3>I like {fav}</h3>;
 }
-
+const foodLike = [
+  {name: 'Kimchi'},
+  {name: 'Samgyeopsal'},
+  {name: 'Bibimbap'},
+  {name: 'Doncasu'},
+  {name: 'Kimbap'},
+];
 function App() {
   return (
   <div>
     hello react
-    <Food fav="kimchi" something={true} papapapa={['hello',1,2,3,4,true]}/>
   </div> );
   
 }
