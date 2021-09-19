@@ -190,8 +190,68 @@ function App() {
 
 export default App;
 ```
-console.log를 이용하여 map함수를 출력하면 콘솔 창에서
+console.log를 이용하여 map함수를 출력하면 콘솔 창에서  
 map함수가 반환한 리액트 컴포넌트를 볼수 있다.
+
+#### key props
+리액트는 컴포넌트가 서로 다르다는 걸 알 방법이 없기 때문에  
+직접 키값을 줘서 리액트에게 컴포넌트가 다르다는 것을 알려줘야한다.
+```javascript
+//key props 추가
+function Food({name,picture}){
+  return (<div>
+    <h2>I like {name}</h2>
+    <img src={picture} alt={name} />
+    </div>
+  );
+}
+const foodLike = [
+  {
+    id:1,
+    name: 'Kimchi'
+  },
+  {
+    id:2,
+    name: 'Samgyeopsal'
+  },
+  {
+    id:3,
+    name: 'Bibimbap'
+  },
+  { 
+    id:4,
+    name: 'Doncasu'}
+  ,
+  { 
+    id:5,
+    name: 'Kimbap'
+  },
+];
+
+function renderFood(dish){
+   return <Food key={dish.id}name={dish.name} picture={dish.image} />;
+}
+function App() {
+  return (
+  <div>
+    {foodLike.map(renderFood)}
+  </div> 
+  );
+}
+
+export default App;
+```
+이미지를 추가할때 alt속성을 추가하지않으면 경고메세지를 준다
+```javascript
+//alt 속성 추가
+function Food({name,picture}){
+  return (<div>
+    <h2>I like {name} alt={name}</h2>
+    <img src={picture} />
+    </div>
+  );
+}
+```
 
 ## 9월 08일 
 
