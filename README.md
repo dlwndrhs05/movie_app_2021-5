@@ -11,10 +11,10 @@ Git 2.28v 부터 사용자가 기존의 master로 지정되 있던 기본 브랜
 우선 Git의 버전이 2.28이상인지 확인학 config를 확인한다  
 우선 순위는 Local>Global>System 순이며 Local 설정 파일이 제일 높다
 ```git
-+System 설정 파일 확인: git config --system --list
-+Global 설정 파일 확인: git config --global --list
-+Local 설정 파일 확인: git config --local --list
-+모든 설정 확인:git config --list
++ System 설정 파일 확인: git config --system --list
++ Global 설정 파일 확인: git config --global --list
++ Local 설정 파일 확인: git config --local --list
++ 모든 설정 확인:git config --list
 ```
 설정이 끝날시 새로 생성하는 저장소부터 적용이 된다  
 ```git
