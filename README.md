@@ -16,8 +16,8 @@ Git 2.28v 부터 사용자가 기존의 master로 지정되 있던 기본 브랜
 + 모든 설정 확인:git config --list
 설정이 끝날시 새로 생성하는 저장소부터 적용이 된다  
 
-<!-- 기존브랜치 변경 -->
-git branch -m master main
+기존브랜치 변경  
++ git branch -m master main
 ## 9월 15일
 
 #### JSX
