@@ -5,9 +5,37 @@
 ### 영화 API 사용해보기
 영화 데이터를 로딩하려면 자바스크립트의 fetch() 라는 함수가 필요하다  
 대신 우리는 axios라는 도구를 사용할것이다.  
+
+
+axios 설치
 ```javascript
 > npm install axios
 ```
+사용한 APi  
+[노마드 코더 깃허브](https://github.com/serranoarevalo/yts-proxy)  
+
+API를 영화 앱에서 호출
+```javascript
+import React from "react";
+import axios from "axios";
+
+class App extends React.Component{
+  state = {
+    isLoading: true,
+    movies: [],
+  };
+  componentDidMount (){
+   axios.get('https://yts-proxy.now.sh/list_movies.json');
+  }
+  render () {
+    const { isLodading } = this.state;
+    return <div>{isLoading ? 'Lodading...' : 'We are ready'}</div>;
+  }
+}
+export default App;
+
+```
+
 ## 9월 29일
 
 ### 번외 Master branch main branch로 변경
