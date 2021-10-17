@@ -1,44 +1,19 @@
 
-function Food({name,picture}){
-  return (<div>
-    <h2>I like {name}</h2>
-    <img src={picture} alt={name}/>
-    </div>
-  );
-}
-const foodLike = [
-  {
-    id:1,
-    name: 'Kimchi'
-  },
-  {
-    id:2,
-    name: 'Samgyeopsal'
-  },
-  {
-    id:3,
-    name: 'Bibimbap'
-  },
-  { 
-    id:4,
-    name: 'Doncasu'}
-  ,
-  { 
-    id:5,
-    name: 'Kimbap'
-  },
-];
+import React from "react";
 
-function renderFood(dish){
-   return <Food name={dish.name} picture={dish.image} />;
+class App extends React.Component{
+  state = {
+    isLoading: true,
+    movies: [],
+  };
+  componentDidMount (){
+    setTimeout (() =>   {
+      this.setState({ isLoading: false });
+    },6000);
+  }
+  render () {
+    const { isLodading } = this.state;
+    return <div>{isLoading ? 'Lodading...' : 'We are ready'}</div>;
+  }
 }
-function App() {
-  return (
-  <div>
-    {foodLike.map(renderFood)}
-  </div> 
-  );
-  
-}
-
 export default App;

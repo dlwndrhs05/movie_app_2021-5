@@ -1,5 +1,13 @@
 # 이중곤 201930323
 
+## 10월 13일
+
+### 영화 API 사용해보기
+영화 데이터를 로딩하려면 자바스크립트의 fetch() 라는 함수가 필요하다  
+대신 우리는 axios라는 도구를 사용할것이다.  
+```javascript
+> npm install axios
+```
 ## 9월 29일
 
 ### 번외 Master branch main branch로 변경
