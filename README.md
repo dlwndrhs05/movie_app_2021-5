@@ -33,6 +33,32 @@ class App extends React.Component{
   }
 }
 export default App;
+```
+axios는 네트워크를 사용해서 느리게 동작한다   
+그러므로 axios.get()을 포함하고 있는 함수의 실행이 끝날 때까지 시간이 걸릴수 있도로 알게만들어야한다.  
+```javascript
+import React from "react";
+import axios from "axios";
+
+class App extends React.Component{
+  state = {
+    isLoading: true,
+    movies: [],
+  };
+  //getMovies 함수추가
+  getMovies = () =>{
+    //axios.get이 반환한 값을 movies 에 저장
+    const movies = axios.get('https://yts-proxy.now.sh/list_movies.json');
+  }
+  componentDidMount (){
+      this.getMovies();
+  }
+  render () {
+    const { isLodading } = this.state;
+    return <div>{isLoading ? 'Lodading...' : 'We are ready'}</div>;
+  }
+}
+export default App;
 
 ```
 
