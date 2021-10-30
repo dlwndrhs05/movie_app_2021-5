@@ -1,5 +1,122 @@
 # 이중곤 201930323
+## 10월 27일
 
+### 영화 앱 다듬기
+
+#### 장르 추가
+```javascript
+//Movie.js
+import react from "react";
+import { ReactPropTypes } from "react";
+//장르 props 추가
+function Movie({title,year,summary,poster,genres}) {
+    return (
+    <div class="movie">
+        <img src={poster} alt={title} title={title} />
+        <div class="movie__data">
+            <h3 class="movie__title">{titel}</h3>
+            <h5 class="movie__year">{year}</h5>
+            <p class="movie__summary">{summary}</p>
+        </div>
+    </div>
+    );
+}
+Movie.PropTypes = {
+    year: PropTypes.number.isRequired,
+    title: PropTypes.number.isRequired,
+    summary: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genres: PropTypes.arry0f(PropTypes.string).isRequired //장르 prop-type 추가
+};
+export default Movie;
+```
+  
+App.js에도 컴포넌트를 추가하여 장르 props을 전달하도록 한다.
+```javascript
+//App.js
+import React from "react";
+import axios from "axios";
+import Movie from './Movie';
+import './App.css';
+
+class App extends React.Component{
+  state = {
+    isLoading: true,
+    movies: [],
+  };
+  getMovies = async () =>{
+    const {
+      data:{
+        data:{movies},
+      },
+     } = await axios.get('https://yts-proxy.now.sh/list_movies.json?sort_by=rating');
+    console.log({ movies, isLoading: false });
+  }
+  componentDidMount (){
+      this.getMovies();
+  }
+  render () {
+    const { isLodading,movies } = this.state;
+    return <section class="container">
+      {isLoading ? (
+        <div class="loader">
+    <span class="loader__text">'Lodading...'</span>
+    </div>
+    ) : (
+      <div class="movies">
+        { movies.map(movie => (
+          <Movie
+            key={movie.id}
+            id={movie.id}
+            year={movie.year}
+            title={movie.title}
+            summary={movie.summary}
+            poster={movie.medium_cover_image}
+            genres={movie.genres} //장르 컴포넌트 추가
+          />
+          ))}
+          </div>
+        )}
+        </section>
+  }
+}
+export default App;
+
+```
+Movie 컴포넌트에서 장르를 출력하도록 코드를 수정  
+장르 props가 배열이기 떄문에 map() 함수를 사용하여 수정
+```javascript
+//Movie.js
+import react from "react";
+import { ReactPropTypes } from "react";
+
+function Movie({title,year,summary,poster,genres}) {
+    return (
+    <div className="movie">
+        <img src={poster} alt={title} title={title} />
+        <div className="movie__data">
+            <h3 className="movie__title">{titel}</h3>
+            <h5 className="movie__year">{year}</h5>
+            <ul className="movie__genres">
+                {genres.map((genre) => {
+                    return <li className="movie__genre">{genre}</li>;
+                })}
+            </ul>
+            <p className="movie__summary">{summary}</p>
+        </div>
+    </div>
+    );
+}
+Movie.PropTypes = {
+    year: PropTypes.number.isRequired,
+    title: PropTypes.number.isRequired,
+    summary: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genres: PropTypes.arry0f(PropTypes.string).isRequired
+};
+
+export default Movie;
+```
 ## 10월 13일
 
 ### 영화 API 사용해보기
