@@ -216,6 +216,46 @@ body{
     font-size: 14px;
 }
 ```
+#### slice()함수를 사용하여 문자열 제한
+```javascript
+//Movie.js
+import PropTypes from 'prop-types';
+import './Movie.css';
+function Movie({title,year,summary,poster,genres}) {
+    return (
+    <div className="movie">
+        <img src={poster} alt={title} title={title} />
+        <div className="movie__data">
+            <h3 className="movie__title">{title}</h3>
+            <h5 className="movie__year">{year}</h5>
+            <ul className="movie__genres">
+                {genres.map((genre,index) => {
+                    return <li key={index} className="movie__genre">{genre}</li>;
+                })}
+            </ul>
+            <p className="movie__summary">{summary.slice(0,180)}...</p>
+        </div>
+    </div>
+    );
+}
+Movie.propTypes = {
+    year: PropTypes.number.isRequired,
+    title: PropTypes.number.isRequired,
+    summary: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string).isRequired
+};
+
+export default Movie;
+```
+### 영화앱에 여러기능 추가하기
+
+#### react-router-dom 설치후 프로젝트 정리
+```javascript
+//터미널
+//react-router-dom 설치
+>npm install react-router-dom
+```
 ## 10월 13일
 
 ### 영화 API 사용해보기
