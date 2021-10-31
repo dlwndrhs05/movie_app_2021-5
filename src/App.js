@@ -20,11 +20,11 @@ class App extends React.Component{
       this.getMovies();
   }
   render () {
-    const { isLodading,movies } = this.state;
+    const { isLoading,movies } = this.state;
     return <section className="container">
       {isLoading ? (
         <div className="loader">
-    <span class="loader__text">'Lodading...'</span>
+    <span className="loader__text">'Lodading...'</span>
     </div>
     ) : (
       <div className="movies">

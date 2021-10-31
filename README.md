@@ -117,6 +117,105 @@ Movie.PropTypes = {
 
 export default Movie;
 ```
+출력은 잘되지만 콘솔을 확인하면 경고메세지가 나온다  
+li엘리먼트에 key props를 추가하면 없어진다
+```javascript
+//Movie.js
+import react from "react";
+import { ReactPropTypes } from "react";
+
+function Movie({title,year,summary,poster,genres}) {
+    return (
+    <div className="movie">
+        <img src={poster} alt={title} title={title} />
+        <div className="movie__data">
+            <h3 className="movie__title">{titel}</h3>
+            <h5 className="movie__year">{year}</h5>
+            <ul className="movie__genres">
+                {genres.map((genre,index) => {
+                    return <li key={index} className="movie__genre">{genre}</li>;
+                })}
+            </ul>
+            <p className="movie__summary">{summary}</p>
+        </div>
+    </div>
+    );
+}
+Movie.PropTypes = {
+    year: PropTypes.number.isRequired,
+    title: PropTypes.number.isRequired,
+    summary: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genres: PropTypes.arry0f(PropTypes.string).isRequired
+};
+
+export default Movie;
+```
+#### 영화 앱 스타일링
+css를 사용해서 앱을 스타일링한다  
+우선 App.css 파일을 수정해서 영화 앱 전체에 적용한 글꼴,배경색을 적용한다.
+```css
+/* App.css */
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #eff3f7;
+    height: 100%;
+}
+```
+영화카드 모양으로 출력을 하려면 Movie.css를 수정하여 만든다
+```css
+/*Movie.css*/
+.movies .movie{
+    background-color: white;
+    margin-bottom: 70px;
+    font-weight: 300;
+    padding: 20px;
+    border-radius: 5px;
+    color:#adaeb9;
+    box-shadow: 0 13px 27px -5px rgba(50,50,93,0.25), 0 8px 16px -8px
+    rgba(0, 0, 0, 0.3),0 -6px 16px -6px rgba(0,0,0,0.025);
+}
+.movies .movie a{
+    display: grid;
+    grid-template-columns: minmax(150px,1fr) 2fr;
+    grid-gap:20px;
+    text-decoration: none;
+    color:inherit;
+}
+.movie img{
+    position: relative;
+    top:-50px;
+    max-width: 150px;
+    width: 100%;
+    margin-right: 30px;
+    box-shadow: 0 30px 60px -12px rgba(50,50,93,0.25), 0 18px 36px -18px rgba(0,0,0,0.3),
+    0 -12px 36px -8px rgba(0,0,0,0.025);
+}
+.movie .movie__title {
+    margin-bottom:5px;
+    font-size: 24px;
+    color: #2c2c2c;
+}
+.movie .movie__genres {
+    list-style: none;
+    padding:0;
+    margin :0;
+    display:flex;
+    flex-wrap:wrap;
+    margin:5px 0px;
+}
+.movie__genres li,
+.movie .movie__year{
+    margin-right: 10px;
+    font-size: 14px;
+}
+```
 ## 10월 13일
 
 ### 영화 API 사용해보기
