@@ -259,7 +259,7 @@ export default Movie;
 //react-router-dom 설치
 >npm install react-router-dom
 ```
-src폴더안에 컴포넌트 역할에 맞는 components 폴더와 라우터역할을할 routes 폴더를 만든다  
+src폴더안에 컴포넌트 역할에 맞는 components 폴더와 라우터역할을 해줄 routes 폴더를 만든다  
 내비게이션에 Home,About 메뉴를 만들 예정이므로 각 각 Home.js About.js 파일을 생성한다  
 Home.js 파일에 작성할 코드는 App.js 파일의 코드를 그대로 복사하면 된다.  
 ```javascript
