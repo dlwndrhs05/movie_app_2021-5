@@ -250,12 +250,193 @@ export default Movie;
 ```
 ### 영화앱에 여러기능 추가하기
 
-#### react-router-dom 설치후 프로젝트 정리
+#### react-router-dom 설치후 프로젝트 폴더 정리
+화면이동을 시키는 내비게이션 기능을 추가할 예정이다  
+화면을 이동시켜주려면 라우터라는 장치가 필요하다  
+라우터 설정을 위해 react-router-dom을 먼저 설치한다.
 ```javascript
 //터미널
 //react-router-dom 설치
 >npm install react-router-dom
 ```
+src폴더안에 컴포넌트 역할에 맞는 components 폴더와 라우터역할을할 routes 폴더를 만든다  
+내비게이션에 Home,About 메뉴를 만들 예정이므로 각 각 Home.js About.js 파일을 생성한다  
+Home.js 파일에 작성할 코드는 App.js 파일의 코드를 그대로 복사하면 된다.  
+```javascript
+//Home.js
+import React from "react";
+import axios from "axios";
+import Movie from '../components/Movie';
+import './Home.css';
+
+class Home extends React.Component{
+  state = {
+    isLoading: true,
+    movies: [],
+  };
+  getMovies = async () =>{
+    const {
+      data:{
+        data:{movies},
+      },
+     } = await axios.get('https://yts-proxy.now.sh/list_movies.json?sort_by=rating');
+    console.log({ movies, isLoading: false });
+  }
+  componentDidMount (){
+      this.getMovies();
+  }
+  render () {
+    const { isLoading,movies } = this.state;
+    return <section className="container">
+      {isLoading ? (
+        <div className="loader">
+          <span className="loader__text">'Loading...'</span>
+        </div>
+        ) : (
+        <div className="movies">
+          { movies.map(movie => (
+            <Movie
+              key={movie.id}
+              id={movie.id}
+              year={movie.year}
+              title={movie.title}
+              summary={movie.summary}
+              poster={movie.medium_cover_image}
+              genres={movie.genres}
+            />
+            ))}
+            </div>
+          )}
+          </section>
+  
+  }
+}
+export default Home;
+```
+마찬가지로 Home.js에 쓰일 Home.css를 만들어야한다
+```css
+/*Home.css*/
+.container{
+    height:100%;
+    display:flex;
+    justify-content:center;
+}
+.loader{
+    width: 100%;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    font-weight:300;
+}
+.movies{
+    display:grid;
+    grid-template-columns: repeat(2,minmax(400px,1fr));
+    grid-gap: 100px;
+    padding:50px;
+    width: 80%;
+    padding-top: 70px;
+}
+
+@media screen and(max-width: 1090px){
+    .movies {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+} 
+```
+App.js를 수정후 잘 작동하는지 확인해 보자
+```javascript
+//App.js
+import React from 'react';
+import Home from './routes/Home';
+import './App.css'
+
+function App(){
+  return <Home />;
+}
+
+export default App;
+
+```
+#### 라우터 만들어 보기
+라우터는 사용자가 입력한 URL을 통해 특정 컴포넌트를 불러와 준다.  
+react-router-dom은 여러 종류의 라우터를 제공하는데 그중 HashRouter와 Route 컴포넌트를 사용할 예정이다.
+```javascript
+//App.js
+import React from 'react';
+import './App.css'
+import{HashRouter, Route} from 'react-router-dom';
+
+function App(){
+  return (
+    <HashRouter>
+      <Route/>
+    </HashRouter>
+  );
+}
+
+export default App;
+```
+About 컴포넌트를 임포트후 path,component props에 URL과 About컴포넌트를 전달하게한다.
+```javascript
+//App.js
+import React from 'react';
+import './App.css'
+import{HashRouter, Route} from 'react-router-dom';
+import About from './routes/About';
+
+function App(){
+  return (
+    <HashRouter>
+      <Route path="/about" component={About}/>
+    </HashRouter>
+  );
+}
+
+export default App;
+```
+About.js에 연결했으니 About.js도 수정해주자
+```javascript
+//About.js
+import React from "react";
+
+function About() {
+    return <span>About this page: I built it because I love movies.</span>;
+}
+
+export default About;
+```
+라우터의 동작을 자세히 알아보기 위해   
+Home,About 컴포넌트는 잠시 제외하고 아래와 같이 라우터를 재구성하고 라우터의 동작을 알아보자
+```javascript
+//App.js
+import React from 'react';
+import './App.css'
+import{HashRouter, Route} from 'react-router-dom';
+import About from './routes/About';
+
+function App(){
+  return (
+    <HashRouter>
+      <Route path="/home">
+        <h1>Home</h1>
+      </Route>
+      <Route path="/home/introduction">
+        <h1>introduction</h1>
+      </Route>
+      <Route path="/about">
+        <h1>About</h1>
+      </Route>
+    </HashRouter>
+  );
+}
+
+export default App;
+```
+라우터는 사용자가 /home/introduction에 접속하면  
+/,/home,/home/introduction 순서로 path props가 있는지 찾는다  
+경로중에 해당하는 컴포넌트가 있으면 모두 표시를 한다
 ## 10월 13일
 
 ### 영화 API 사용해보기
