@@ -436,7 +436,28 @@ export default App;
 ```
 라우터는 사용자가 /home/introduction에 접속하면  
 /,/home,/home/introduction 순서로 path props가 있는지 찾는다  
-경로중에 해당하는 컴포넌트가 있으면 모두 표시를 한다
+경로중에 해당하는 컴포넌트가 있으면 모두 표시를 한다  
+
+Home 컴포넌트도 연결하고 테스트 하기
+```javascript
+//App.js
+import React from 'react';
+import './App.css'
+import{HashRouter, Route} from 'react-router-dom';
+import About from './routes/About';
+import Home from './routes/Home';
+
+function App(){
+  return (
+    <HashRouter>
+      <Route path="/" exact={true} component={Home}/>
+      <Route path="/about" component={About}/>
+    </HashRouter>
+  );
+}
+
+export default App;
+```
 ## 10월 13일
 
 ### 영화 API 사용해보기
