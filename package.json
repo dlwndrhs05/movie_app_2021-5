@@ -17,8 +17,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "preedeploy":"npm run build",
-    "deploy":"gh-pages -d bulid"
+    "preedeploy": "npm run build",
+    "deploy": "gh-pages -d bulid"
   },
   "eslintConfig": {
     "extends": "react-app"
