@@ -1,5 +1,30 @@
 # 이중곤 201930323
 
+## 11월 10일
+
+### 깃허브에 업로드하기
+homepage의 키값을 browserslist키 아래에 추가한다.
+```javascript
+"homepage": "https://dlwndrhs05.github.io/movie_app_2021-5"
+```
+package.json에 scripts 키값으로 명령어를 추가한다.
+```javascript
+ "deploy": "gh-pages -d bulid",
+    "preedeploy": "npm run build"
+```
+깃허브에서 제공하는 gh-page서비스로 영화 앱을 배포한다.
+```javascript
+//터미널에서
+npm install gh-page
+```
+터미널에서 명령어를 사용하여 영화 앱 배포를 시작한다.
+```javascript
+//터미널에서
+npm run deploy
+```
+<!-- CDN:
+CORS:
+Babel: -->
 ## 11월 3일
 
 ## 10월 27일
