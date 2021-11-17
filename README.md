@@ -825,7 +825,7 @@ function Food({name,picture}){
 #### 리액트 생성 및 시작 삭제
 보일러 플레이트  
 ```
-터미널에서 create-react-app 프로젝트이름 
+터미널에서 npx create-react-app 프로젝트이름 
 ```
 실행시 프로젝트가 생성된다
 
