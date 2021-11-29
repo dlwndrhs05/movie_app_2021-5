@@ -1,5 +1,50 @@
 # 이중곤 201930323
 
+## 11월 24일
+
+### 리액트사이트 자습서 보고 실습하기
+리액트 공식 자습서:https://ko.reactjs.org/tutorial/tutorial.html  
+
+자습서는 최종 결과물로 틱택토 게임을 만들게 된다  
+
+### 자습서 환경설정
+
+개발에 들어가기전에 기본적인 환경설정을 하고가자  
+초기 코드:https://codepen.io/gaearon/pen/oWWQNa  
+
+```javascript
+//예시 코드
+class ShoppingList extends React.Component {
+  render() {
+    return (
+      <div className="shopping-list">
+        <h1>Shopping List for {this.props.name}</h1>
+        <ul>
+          <li>Instagram</li>
+          <li>WhatsApp</li>
+          <li>Oculus</li>
+        </ul>
+      </div>
+    );
+  }
+}
+
+// 사용 예제: <ShoppingList name="Mark" />
+```
+
+상단 코드부분의 ShoppingList를 Ract 컴포넌트 클래스 또는 React 컴포넌트 타입을 말한다.  
+개별 컴포넌트는 props라는 매개변수를 받아오며 render 함수를 통하여 표시할 뷰 게층 구조를 반환한다.
+
+
+### 개요
+
+#### React란 무엇인가요?  
+React는 사용자 인터페이스를 구축하기 위한 선언적이고 효율적이며 유연한 JavaScript기반의 라이브러리이다  
+
+“컴포넌트”라고 불리는 작고 고립된 코드의 파편을 이용하여 복잡한 UI를 구성한다.
+
+render 함수는 화면에서 보고자하는 내용을 반환한다.  
+render는 렌더링할 내용을 경량화한 React 엘리먼트로 반환한다.
 ## 11월 10일
 
 ### 깃허브에 업로드하기
